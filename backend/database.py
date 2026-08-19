@@ -1,21 +1,44 @@
 import os
+from pathlib import Path
+from urllib.parse import quote_plus
+
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# Load environment variables from .env file
-load_dotenv()
+# Project root = one level above backend/
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:8483@localhost:5432/pharmalaunch")
+# Explicitly load the project's .env file
+ENV_FILE = BASE_DIR / ".env"
+load_dotenv(ENV_FILE)
 
-# Fix postgresql:// URI format if needed
-if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
-# Strict connection to PostgreSQL 17
-engine = create_engine(DATABASE_URL, pool_pre_ping=True)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+if not DB_PASSWORD:
+    raise RuntimeError(f"DB_PASSWORD is not set. Expected .env at: {ENV_FILE}")
+
+# URL-encode the password so special characters like @ work correctly
+encoded_password = quote_plus(DB_PASSWORD)
+
+DATABASE_URL = (
+    f"postgresql://postgres:{encoded_password}"
+    f"@localhost:5432/pharmalaunch"
+)
+
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True
+)
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
+
 Base = declarative_base()
+
 
 def get_db():
     db = SessionLocal()

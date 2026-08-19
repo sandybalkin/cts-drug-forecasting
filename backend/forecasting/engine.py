@@ -1,14 +1,16 @@
-import os
 import pandas as pd
 import numpy as np
+
+from backend.databricks_data import load_gold_data
 
 from .bass import BassModelTrainer, bass_weekly_curve, P_FEATURES, Q_FEATURES
 from .gower_similarity import get_top_analogs, FEATURES, CATEGORICAL_FEATURES
 from .analog import compute_analog_curve
 from .hybrid import compute_hybrid_curve, weekly_to_monthly
 
+
 class ForecastingEngine:
-    def __init__(self, data_dir: str):
+    def __init__(self, data_dir: str = None):
         self.data_dir = data_dir
         self.bass_df = None
         self.similarity_df = None
@@ -17,16 +19,17 @@ class ForecastingEngine:
         self.is_initialized = False
 
     def initialize(self):
-        bass_path = os.path.join(self.data_dir, "bass_final.csv")
-        sim_path = os.path.join(self.data_dir, "similarity+analog_features_final.csv")
-        weekly_path = os.path.join(self.data_dir, "weekly_rx_final.csv")
+        # Load model-ready data directly from Databricks Gold tables
+        (
+            self.similarity_df,
+            self.bass_df,
+            self.weekly_df
+        ) = load_gold_data()
 
-        self.bass_df = pd.read_csv(bass_path)
-        self.similarity_df = pd.read_csv(sim_path)
-        self.weekly_df = pd.read_csv(weekly_path)
-
+        # Train Bass model using Databricks Gold data
         self.trainer = BassModelTrainer()
         self.trainer.fit(self.bass_df, self.weekly_df)
+
         self.is_initialized = True
 
     def run(self, new_drug: dict, top_k: int = 3, w_analog: float = 0.10) -> dict:
@@ -49,35 +52,77 @@ class ForecastingEngine:
 
         # 4. Base Analog curve
         analog_base, analogs_used = compute_analog_curve(
-            new_drug, self.similarity_df, self.weekly_df, m_hat, k=top_k
+            new_drug,
+            self.similarity_df,
+            self.weekly_df,
+            m_hat,
+            k=top_k
         )
 
         # 5. Base Hybrid curve
-        base_hybrid = compute_hybrid_curve(analog_base, bass_base, w_analog, w_bass)
+        base_hybrid = compute_hybrid_curve(
+            analog_base,
+            bass_base,
+            w_analog,
+            w_bass
+        )
 
-        # 6. Bull Scenario (p*1.10, q*1.10, m*1.20)
+        # 6. Bull Scenario
         bull_p = p_hat * 1.10
         bull_q = q_hat * 1.10
         bull_m = m_hat * 1.20
-        bass_bull = bass_weekly_curve(bull_p, bull_q, bull_m)
-        analog_bull, _ = compute_analog_curve(
-            new_drug, self.similarity_df, self.weekly_df, float(bass_bull.sum()), k=top_k
-        )
-        bull_hybrid = compute_hybrid_curve(analog_bull, bass_bull, w_analog, w_bass)
 
-        # 7. Bear Scenario (p*0.90, q*0.90, m*0.80)
+        bass_bull = bass_weekly_curve(
+            bull_p,
+            bull_q,
+            bull_m
+        )
+
+        analog_bull, _ = compute_analog_curve(
+            new_drug,
+            self.similarity_df,
+            self.weekly_df,
+            float(bass_bull.sum()),
+            k=top_k
+        )
+
+        bull_hybrid = compute_hybrid_curve(
+            analog_bull,
+            bass_bull,
+            w_analog,
+            w_bass
+        )
+
+        # 7. Bear Scenario
         bear_p = p_hat * 0.90
         bear_q = q_hat * 0.90
         bear_m = m_hat * 0.80
-        bass_bear = bass_weekly_curve(bear_p, bear_q, bear_m)
-        analog_bear, _ = compute_analog_curve(
-            new_drug, self.similarity_df, self.weekly_df, float(bass_bear.sum()), k=top_k
+
+        bass_bear = bass_weekly_curve(
+            bear_p,
+            bear_q,
+            bear_m
         )
-        bear_hybrid = compute_hybrid_curve(analog_bear, bass_bear, w_analog, w_bass)
+
+        analog_bear, _ = compute_analog_curve(
+            new_drug,
+            self.similarity_df,
+            self.weekly_df,
+            float(bass_bear.sum()),
+            k=top_k
+        )
+
+        bear_hybrid = compute_hybrid_curve(
+            analog_bear,
+            bass_bear,
+            w_analog,
+            w_bass
+        )
 
         # 8. Assemble Weekly Data
         weeks = list(range(1, 53))
         weekly_data = []
+
         cum_analog = 0.0
         cum_bass = 0.0
         cum_hybrid = 0.0
@@ -111,13 +156,16 @@ class ForecastingEngine:
         monthly_bear = weekly_to_monthly(bear_hybrid)
 
         monthly_data = []
+
         c_m_base = 0.0
         c_m_bull = 0.0
         c_m_bear = 0.0
+
         for m in range(12):
             c_m_base += float(monthly_base[m])
             c_m_bull += float(monthly_bull[m])
             c_m_bear += float(monthly_bear[m])
+
             monthly_data.append({
                 "month": m + 1,
                 "hybrid_rx": round(float(monthly_base[m]), 2),
@@ -130,23 +178,50 @@ class ForecastingEngine:
 
         # 10. Enrich Analogs Info with attributes
         analogs_enriched = []
+
         for pid, weight, similarity in analogs_used:
-            match_row = self.similarity_df[self.similarity_df["product_id"] == pid]
+            match_row = self.similarity_df[
+                self.similarity_df["product_id"] == pid
+            ]
+
             details = {}
+
             if not match_row.empty:
                 r = match_row.iloc[0]
+
                 details = {
-                    "therapeutic_area": str(r.get("therapeutic_area", "")),
-                    "indication": str(r.get("indication", "")),
-                    "active_ingredient": str(r.get("active_ingredient", "")),
-                    "pharmacological_class": str(r.get("pharmacological_class", "")),
-                    "route_of_administration": str(r.get("route_of_administration", "")),
-                    "competition_level": float(r.get("competition_level", 0)),
-                    "market_access_level": float(r.get("market_access_level", 0))
+                    "therapeutic_area": str(
+                        r.get("therapeutic_area", "")
+                    ),
+                    "indication": str(
+                        r.get("indication", "")
+                    ),
+                    "active_ingredient": str(
+                        r.get("active_ingredient", "")
+                    ),
+                    "pharmacological_class": str(
+                        r.get("pharmacological_class", "")
+                    ),
+                    "route_of_administration": str(
+                        r.get("route_of_administration", "")
+                    ),
+                    "competition_level": float(
+                        r.get("competition_level", 0)
+                    ),
+                    "market_access_level": float(
+                        r.get("market_access_level", 0)
+                    )
                 }
 
-            product_weekly = self.weekly_df[self.weekly_df["product_id"] == pid]
-            hist_total_rx = float(product_weekly["weekly_rx"].sum()) if not product_weekly.empty else 0.0
+            product_weekly = self.weekly_df[
+                self.weekly_df["product_id"] == pid
+            ]
+
+            hist_total_rx = (
+                float(product_weekly["weekly_rx"].sum())
+                if not product_weekly.empty
+                else 0.0
+            )
 
             analogs_enriched.append({
                 "product_id": pid,
@@ -158,7 +233,13 @@ class ForecastingEngine:
             })
 
         # 11. Human-readable Explanations
-        explanations = self._generate_explanations(new_drug, p_hat, q_hat, m_hat, analogs_enriched)
+        explanations = self._generate_explanations(
+            new_drug,
+            p_hat,
+            q_hat,
+            m_hat,
+            analogs_enriched
+        )
 
         return {
             "bass_params": {
@@ -186,29 +267,65 @@ class ForecastingEngine:
             "explanations": explanations
         }
 
-    def _generate_explanations(self, new_drug: dict, p_hat: float, q_hat: float, m_hat: float, analogs: list) -> dict:
-        analog_names = ", ".join([a["product_id"] for a in analogs])
+    def _generate_explanations(
+        self,
+        new_drug: dict,
+        p_hat: float,
+        q_hat: float,
+        m_hat: float,
+        analogs: list
+    ) -> dict:
+
+        analog_names = ", ".join(
+            [a["product_id"] for a in analogs]
+        )
+
         top_analog = analogs[0] if len(analogs) > 0 else None
-        
-        why_analogs = f"Top {len(analogs)} analogs ({analog_names}) were selected using Gower similarity across 12 clinical, commercial, and target population attributes."
+
+        why_analogs = (
+            f"Top {len(analogs)} analogs ({analog_names}) were selected "
+            f"using Gower similarity across 12 clinical, commercial, "
+            f"and target population attributes."
+        )
+
         if top_analog:
-            why_analogs += f" The primary analog is {top_analog['product_id']} with a similarity score of {top_analog['similarity_pct']}%, sharing matching therapeutic area ({top_analog['details'].get('therapeutic_area', '')}) and route of administration ({top_analog['details'].get('route_of_administration', '')})."
+            why_analogs += (
+                f" The primary analog is {top_analog['product_id']} "
+                f"with a similarity score of "
+                f"{top_analog['similarity_pct']}%, sharing matching "
+                f"therapeutic area "
+                f"({top_analog['details'].get('therapeutic_area', '')}) "
+                f"and route of administration "
+                f"({top_analog['details'].get('route_of_administration', '')})."
+            )
 
         why_bass_p = (
-            f"The predicted innovation parameter (p = {p_hat:.4f}) reflects early market adoption velocity. "
-            f"It is driven primarily by marketing awareness ({new_drug.get('marketing_awareness', 'N/A')}/10), "
-            f"launch strength ({new_drug.get('launch_strength', 'N/A')}/10), and physician awareness ({new_drug.get('physician_awareness', 'N/A')}/10)."
+            f"The predicted innovation parameter (p = {p_hat:.4f}) "
+            f"reflects early market adoption velocity. "
+            f"It is driven primarily by marketing awareness "
+            f"({new_drug.get('marketing_awareness', 'N/A')}/10), "
+            f"launch strength "
+            f"({new_drug.get('launch_strength', 'N/A')}/10), "
+            f"and physician awareness "
+            f"({new_drug.get('physician_awareness', 'N/A')}/10)."
         )
 
         why_bass_q = (
-            f"The predicted imitation parameter (q = {q_hat:.4f}) reflects word-of-mouth and peer adoption acceleration. "
-            f"It is driven by clinical evidence strength ({new_drug.get('clinical_evidence_strength', 'N/A')}/10) "
-            f"and treatment familiarity ({new_drug.get('treatment_familiarity', 'N/A')}/10)."
+            f"The predicted imitation parameter (q = {q_hat:.4f}) "
+            f"reflects word-of-mouth and peer adoption acceleration. "
+            f"It is driven by clinical evidence strength "
+            f"({new_drug.get('clinical_evidence_strength', 'N/A')}/10) "
+            f"and treatment familiarity "
+            f"({new_drug.get('treatment_familiarity', 'N/A')}/10)."
         )
 
         why_m = (
-            f"Total market potential (M = {m_hat:,.0f} prescriptions) is calculated directly as "
-            f"Addressable Population ({new_drug.get('addressable_population', 0):,}) × Estimated Penetration ({float(new_drug.get('estimated_penetration', 0))*100:.1f}%)."
+            f"Total market potential (M = {m_hat:,.0f} prescriptions) "
+            f"is calculated directly as "
+            f"Addressable Population "
+            f"({new_drug.get('addressable_population', 0):,}) × "
+            f"Estimated Penetration "
+            f"({float(new_drug.get('estimated_penetration', 0)) * 100:.1f}%)."
         )
 
         return {
