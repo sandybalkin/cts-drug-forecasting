@@ -1,0 +1,151 @@
+product_id,therapeutic_area,indication,active_ingredient,pharmacological_class,mechanism_of_action,route_of_administration,target_population,addressable_population,competition_level,relative_price_index,market_access_level,clinical_evidence_strength
+P001,Oncology,Colorectal Cancer,Bevacizumab,VEGF Inhibitor (Monoclonal Antibody),"Inhibits VEGF, blocking tumor angiogenesis",Intravenous Infusion,Adult,230154,1.8,2.45,7.9,8.1
+P002,Gastroenterology,IBS,Linaclotide,Guanylate Cyclase-C Agonist,"Activates GC-C receptors, increasing intestinal fluid secretion",Oral,Adult,41647,8.4,1.76,7.8,4.2
+P003,Dermatology,Chronic Urticaria,Omalizumab,Anti-IgE Monoclonal Antibody,"Binds free IgE, preventing mast cell/basophil activation",Subcutaneous Injection,Adult and Pediatric,62254,4.3,1.44,2.7,2.2
+P004,Psychiatry,ADHD,Methylphenidate,Stimulant,Blocks reuptake of dopamine and norepinephrine,Oral,Adult and Pediatric,216270,2.3,0.9,1.1,8.1
+P005,Endocrinology,Osteoporosis,Alendronate,Bisphosphonate,Inhibits osteoclast-mediated bone resorption,Oral,Elderly,73028,6.7,1.61,6.0,3.7
+P006,Respiratory,Allergic Rhinitis,Montelukast,Leukotriene Receptor Antagonist,"Blocks the cysteinyl leukotriene receptor, reducing allergic inflammation",Oral,Adult and Pediatric,183769,6.0,2.07,7.0,4.7
+P007,Psychiatry,Bipolar Disorder,Lamotrigine,Anticonvulsant / Mood Stabilizer,"Blocks voltage-gated sodium channels, stabilizing neuronal excitability",Oral,Adult,179664,4.4,1.1,6.7,4.3
+P008,Infectious Disease,Hepatitis C,Ledipasvir,NS5A Inhibitor,"Inhibits HCV NS5A protein, blocking viral replication",Oral,Adult and Pediatric,42605,3.5,0.69,9.1,5.1
+P009,Infectious Disease,Bacterial Pneumonia,Azithromycin,Macrolide Antibiotic,"Binds bacterial 50S ribosomal subunit, inhibiting protein synthesis",Oral,Adult and Pediatric,79584,1.8,1.33,1.4,5.4
+P010,Respiratory,Cystic Fibrosis,Elexacaftor/Tezacaftor/Ivacaftor,CFTR Modulator,Corrects and potentiates defective CFTR protein function,Oral,Adult and Pediatric,80821,9.6,1.46,8.0,1.7
+P011,Respiratory,Cystic Fibrosis,Elexacaftor/Tezacaftor/Ivacaftor,CFTR Modulator,Corrects and potentiates defective CFTR protein function,Oral,Adult and Pediatric,257656,9.1,0.78,6.0,2.0
+P012,Oncology,Melanoma,Pembrolizumab,PD-1 Checkpoint Inhibitor (Monoclonal Antibody),"Blocks PD-1, restoring T-cell antitumor activity",Intravenous Infusion,Adult,51395,4.3,2.16,8.3,3.9
+P013,Immunology,Psoriatic Arthritis,Secukinumab,IL-17A Inhibitor (Monoclonal Antibody),"Neutralizes IL-17A, reducing joint and skin inflammation",Subcutaneous Injection,Adult and Pediatric,408882,9.0,2.29,5.7,3.8
+P014,Gastroenterology,Hepatic Fibrosis,Obeticholic Acid,FXR Agonist,"Activates farnesoid X receptor, reducing hepatic fibrosis progression",Oral,Adult,465701,2.4,0.86,6.4,8.9
+P015,Cardiology,Hypertension,Lisinopril,ACE Inhibitor,"Inhibits angiotensin-converting enzyme, reducing vasoconstriction",Oral,Adult,15597,5.6,1.89,6.2,2.8
+P016,Infectious Disease,Bacterial Pneumonia,Ceftriaxone,Cephalosporin Antibiotic,Inhibits bacterial cell wall synthesis,Intravenous Infusion,Adult and Pediatric,85900,9.3,0.55,6.0,6.7
+P017,Endocrinology,Hypothyroidism,Levothyroxine,Thyroid Hormone Replacement,"Activates thyroid hormone receptors, restoring metabolic regulation",Oral,Adult and Pediatric,292221,8.5,2.09,3.1,5.8
+P018,Oncology,Breast Cancer,Palbociclib,CDK4/6 Inhibitor,"Inhibits cyclin-dependent kinases 4/6, blocking cell cycle progression",Oral,Adult,30986,7.7,2.13,1.9,1.6
+P019,Cardiology,Hypertension,Propranolol,Beta Blocker (Non-selective),"Blocks beta-adrenergic receptors, reducing heart rate and workload",Oral,Adult,79669,1.5,0.85,1.5,6.3
+P020,Cardiology,Atrial Fibrillation,Apixaban,Anticoagulant (Factor Xa Inhibitor),"Directly inhibits Factor Xa, reducing thrombin generation",Oral,Adult,649430,6.1,1.33,1.4,4.4
+P021,Gastroenterology,Hepatic Fibrosis,Obeticholic Acid,FXR Agonist,"Activates farnesoid X receptor, reducing hepatic fibrosis progression",Oral,Adult,125159,6.8,2.06,2.2,5.8
+P022,Gastroenterology,IBS,Linaclotide,Guanylate Cyclase-C Agonist,"Activates GC-C receptors, increasing intestinal fluid secretion",Oral,Adult,467247,4.3,1.23,3.9,4.4
+P023,Psychiatry,ADHD,Dextroamphetamine,Stimulant,Increases release and blocks reuptake of dopamine and norepinephrine,Oral,Adult and Pediatric,75590,6.7,1.08,7.6,2.8
+P024,Gastroenterology,IBS,Linaclotide,Guanylate Cyclase-C Agonist,"Activates GC-C receptors, increasing intestinal fluid secretion",Oral,Adult,34378,8.2,1.69,8.0,8.2
+P025,Endocrinology,Hypothyroidism,Levothyroxine,Thyroid Hormone Replacement,"Activates thyroid hormone receptors, restoring metabolic regulation",Oral,Adult and Pediatric,143272,5.4,1.7,9.4,2.1
+P026,Dermatology,Chronic Urticaria,Omalizumab,Anti-IgE Monoclonal Antibody,"Binds free IgE, preventing mast cell/basophil activation",Subcutaneous Injection,Adult and Pediatric,125908,4.3,1.13,2.4,2.3
+P027,Infectious Disease,Bacterial Pneumonia,Azithromycin,Macrolide Antibiotic,"Binds bacterial 50S ribosomal subunit, inhibiting protein synthesis",Oral,Adult and Pediatric,213440,9.6,0.74,8.7,6.7
+P028,Psychiatry,ADHD,Methylphenidate,Stimulant,Blocks reuptake of dopamine and norepinephrine,Oral,Adult and Pediatric,146630,9.3,2.06,2.0,10.0
+P029,Gastroenterology,Crohn's Disease,Infliximab,TNF-alpha Inhibitor (Monoclonal Antibody),"Neutralizes TNF-alpha, reducing inflammatory response",Intravenous Infusion,Adult and Pediatric,117841,2.8,2.32,6.9,1.3
+P030,Cardiology,Hyperlipidemia,Atorvastatin,Statin (HMG-CoA Reductase Inhibitor),"Inhibits HMG-CoA reductase, lowering cholesterol synthesis",Oral,Adult,117949,7.3,2.18,1.4,2.8
+P031,Oncology,Colorectal Cancer,Cetuximab,Anti-EGFR Monoclonal Antibody,"Binds EGFR, blocking growth signaling",Intravenous Infusion,Adult,140581,6.5,0.58,9.0,7.4
+P032,Infectious Disease,COVID-19,Ritonavir (with Nirmatrelvir),Protease Inhibitor,"Inhibits viral protease, blocking viral replication (boosted combination)",Oral,Adult and Pediatric,324031,3.7,1.66,7.3,6.8
+P033,Psychiatry,Schizophrenia,Olanzapine,Atypical Antipsychotic,Antagonizes dopamine D2 and serotonin 5-HT2A receptors,Oral,Adult and Pediatric,133220,6.7,1.32,4.7,3.0
+P034,Endocrinology,Obesity,Semaglutide,GLP-1 Receptor Agonist,"Stimulates GLP-1 receptor, enhancing satiety and reducing appetite",Subcutaneous Injection,Adult,76425,6.9,1.13,8.1,5.9
+P035,Gastroenterology,IBS,Linaclotide,Guanylate Cyclase-C Agonist,"Activates GC-C receptors, increasing intestinal fluid secretion",Oral,Adult,145403,8.5,1.49,2.0,1.6
+P036,Dermatology,Vitiligo,Ruxolitinib,"JAK Inhibitor (JAK1/JAK2, Topical)","Inhibits JAK1/JAK2, reducing cytokine-driven melanocyte destruction",Topical,Adult and Pediatric,25705,4.4,0.81,6.4,2.1
+P037,Dermatology,Psoriasis,Deucravacitinib,TYK2 Inhibitor,"Allosterically inhibits TYK2, reducing IL-23/type I interferon signaling",Oral,Adult,201133,5.7,0.83,2.5,8.5
+P038,Oncology,Breast Cancer,Trastuzumab,Monoclonal Antibody (Anti-HER2),"Binds HER2 receptor, blocking growth signaling",Intravenous Infusion,Adult,124542,5.2,0.8,2.6,9.2
+P039,Immunology,Psoriasis,Secukinumab,IL-17A Inhibitor (Monoclonal Antibody),"Neutralizes IL-17A, reducing inflammatory signaling",Subcutaneous Injection,Adult and Pediatric,84010,7.0,2.03,1.5,4.3
+P040,Infectious Disease,Bacterial Pneumonia,Ceftriaxone,Cephalosporin Antibiotic,Inhibits bacterial cell wall synthesis,Intravenous Infusion,Adult and Pediatric,38986,4.1,1.5,5.8,1.9
+P041,Infectious Disease,COVID-19,Remdesivir,Antiviral (RNA Polymerase Inhibitor),Inhibits viral RNA-dependent RNA polymerase,Intravenous Infusion,Adult and Pediatric,26814,1.1,1.06,7.3,6.7
+P042,Neurology,Parkinson's Disease,Pramipexole,Dopamine Agonist,Stimulates dopamine D2/D3 receptors,Oral,Elderly,187766,7.6,1.38,6.0,6.9
+P043,Psychiatry,Bipolar Disorder,Quetiapine,Atypical Antipsychotic,Antagonizes dopamine D2 and serotonin 5-HT2A receptors,Oral,Adult and Pediatric,19980,4.7,2.09,1.8,6.0
+P044,Endocrinology,Type 1 Diabetes,Insulin Lispro,Rapid-Acting Insulin Analog,"Activates insulin receptors, promoting cellular glucose uptake",Subcutaneous Injection,Adult and Pediatric,147515,8.8,1.98,8.2,1.4
+P045,Dermatology,Acne,Isotretinoin,Retinoid,Reduces sebaceous gland size and sebum production,Oral,Adult and Pediatric,38695,8.7,1.2,8.7,3.7
+P046,Infectious Disease,Bacterial Pneumonia,Azithromycin,Macrolide Antibiotic,"Binds bacterial 50S ribosomal subunit, inhibiting protein synthesis",Oral,Adult and Pediatric,626194,3.7,1.32,2.2,6.2
+P047,Neurology,Migraine,Erenumab,Anti-CGRP Receptor Monoclonal Antibody,"Blocks the CGRP receptor, preventing migraine pathway activation",Subcutaneous Injection,Adult,115804,4.1,1.34,9.6,7.8
+P048,Endocrinology,Type 1 Diabetes,Insulin Glargine,Long-Acting Insulin Analog,"Activates insulin receptors, promoting cellular glucose uptake",Subcutaneous Injection,Adult and Pediatric,126138,3.7,0.98,3.9,2.4
+P049,Respiratory,Pulmonary Fibrosis,Nintedanib,Tyrosine Kinase Inhibitor (Multi-target),Inhibits multiple pro-fibrotic kinase pathways,Oral,Adult,66711,2.7,1.62,1.9,6.9
+P050,Psychiatry,Major Depressive Disorder,Fluoxetine,SSRI,Inhibits reuptake of serotonin,Oral,Adult and Pediatric,43319,5.6,1.13,1.5,2.0
+P051,Cardiology,Heart Failure,Enalapril,ACE Inhibitor,"Inhibits angiotensin-converting enzyme, reducing vasoconstriction",Oral,Adult,97647,5.6,1.48,4.0,4.9
+P052,Gastroenterology,Ulcerative Colitis,Tofacitinib,JAK Inhibitor (JAK1/JAK3),"Inhibits Janus kinases, reducing cytokine-driven inflammation",Oral,Adult,196926,1.4,1.42,7.4,2.4
+P053,Dermatology,Chronic Urticaria,Omalizumab,Anti-IgE Monoclonal Antibody,"Binds free IgE, preventing mast cell/basophil activation",Subcutaneous Injection,Adult and Pediatric,39396,8.6,0.51,8.7,6.6
+P054,Respiratory,Allergic Rhinitis,Fluticasone,Intranasal Corticosteroid,"Activates glucocorticoid receptors, reducing nasal inflammation",Inhaled,Adult and Pediatric,43098,3.9,2.1,6.4,2.9
+P055,Infectious Disease,Tuberculosis,Rifampin,Antibiotic (RNA Polymerase Inhibitor),"Inhibits bacterial RNA polymerase, blocking transcription",Oral,Adult and Pediatric,335473,9.0,1.69,2.1,2.3
+P056,Dermatology,Acne,Tretinoin,Retinoid,Modulates keratinocyte differentiation via retinoic acid receptors,Topical,Adult and Pediatric,123489,8.9,1.57,6.6,3.5
+P057,Cardiology,Hypertension,Lisinopril,ACE Inhibitor,"Inhibits angiotensin-converting enzyme, reducing vasoconstriction",Oral,Adult,46141,6.0,1.29,7.1,7.5
+P058,Immunology,Psoriasis,Deucravacitinib,TYK2 Inhibitor,"Allosterically inhibits TYK2, reducing IL-23/type I interferon signaling",Oral,Adult,56091,9.0,1.29,7.1,2.3
+P059,Infectious Disease,Hepatitis C,Ledipasvir,NS5A Inhibitor,"Inhibits HCV NS5A protein, blocking viral replication",Oral,Adult and Pediatric,8905,8.0,1.64,1.9,9.1
+P060,Dermatology,Vitiligo,Ruxolitinib,"JAK Inhibitor (JAK1/JAK2, Topical)","Inhibits JAK1/JAK2, reducing cytokine-driven melanocyte destruction",Topical,Adult and Pediatric,90765,4.6,1.14,6.5,6.2
+P061,Dermatology,Atopic Dermatitis,Dupilumab,IL-4Rα Antagonist (Monoclonal Antibody),"Blocks IL-4 receptor alpha, inhibiting IL-4/IL-13 signaling",Subcutaneous Injection,Adult and Pediatric,17270,9.6,0.99,1.9,7.8
+P062,Infectious Disease,HIV,Dolutegravir,Integrase Strand Transfer Inhibitor,"Inhibits HIV integrase, blocking viral DNA integration",Oral,Adult and Pediatric,189445,6.9,1.49,2.0,3.3
+P063,Respiratory,Asthma,Formoterol,LABA (Long-Acting Beta2 Agonist),Relaxes airway smooth muscle via beta-2 receptor stimulation,Inhaled,Adult and Pediatric,66956,1.9,2.19,6.6,5.9
+P064,Neurology,Alzheimer's Disease,Donepezil,Cholinesterase Inhibitor,"Inhibits acetylcholinesterase, increasing synaptic acetylcholine",Oral,Elderly,108260,8.0,0.91,9.5,2.1
+P065,Cardiology,Hypertension,Propranolol,Beta Blocker (Non-selective),"Blocks beta-adrenergic receptors, reducing heart rate and workload",Oral,Adult,359572,5.8,1.0,3.2,2.5
+P066,Gastroenterology,Hepatic Fibrosis,Obeticholic Acid,FXR Agonist,"Activates farnesoid X receptor, reducing hepatic fibrosis progression",Oral,Adult,99251,9.6,1.46,9.6,2.5
+P067,Psychiatry,Generalized Anxiety Disorder,Venlafaxine,SNRI,Inhibits reuptake of serotonin and norepinephrine,Oral,Adult,71673,2.7,2.48,8.4,7.7
+P068,Endocrinology,Osteoporosis,Denosumab,RANKL Inhibitor (Monoclonal Antibody),"Inhibits RANKL, reducing osteoclast formation and activity",Subcutaneous Injection,Elderly,142519,2.9,2.35,4.9,6.8
+P069,Dermatology,Chronic Urticaria,Omalizumab,Anti-IgE Monoclonal Antibody,"Binds free IgE, preventing mast cell/basophil activation",Subcutaneous Injection,Adult and Pediatric,40145,7.5,1.42,6.9,6.4
+P070,Psychiatry,ADHD,Dextroamphetamine,Stimulant,Increases release and blocks reuptake of dopamine and norepinephrine,Oral,Adult and Pediatric,75180,6.9,1.1,9.5,4.3
+P071,Cardiology,Hyperlipidemia,Rosuvastatin,Statin (HMG-CoA Reductase Inhibitor),"Inhibits HMG-CoA reductase, lowering cholesterol synthesis",Oral,Adult,174646,2.1,0.68,7.0,6.9
+P072,Endocrinology,Type 1 Diabetes,Insulin Lispro,Rapid-Acting Insulin Analog,"Activates insulin receptors, promoting cellular glucose uptake",Subcutaneous Injection,Adult and Pediatric,77152,2.2,1.07,7.1,9.2
+P073,Oncology,Breast Cancer,Palbociclib,CDK4/6 Inhibitor,"Inhibits cyclin-dependent kinases 4/6, blocking cell cycle progression",Oral,Adult,62923,1.2,1.3,8.9,6.5
+P074,Neurology,Alzheimer's Disease,Lecanemab,Anti-Amyloid Monoclonal Antibody,"Binds amyloid-beta aggregates, promoting clearance",Intravenous Infusion,Elderly,60846,9.3,2.19,9.8,7.7
+P075,Neurology,Migraine,Sumatriptan,Triptan (5-HT1B/1D Agonist),"Stimulates serotonin 5-HT1B/1D receptors, causing vasoconstriction",Oral,Adult,365362,8.3,2.22,2.5,1.1
+P076,Endocrinology,Hypothyroidism,Levothyroxine,Thyroid Hormone Replacement,"Activates thyroid hormone receptors, restoring metabolic regulation",Oral,Adult and Pediatric,121067,4.8,1.74,9.4,9.8
+P077,Dermatology,Vitiligo,Ruxolitinib,"JAK Inhibitor (JAK1/JAK2, Topical)","Inhibits JAK1/JAK2, reducing cytokine-driven melanocyte destruction",Topical,Adult and Pediatric,57729,5.5,1.87,6.9,9.9
+P078,Endocrinology,Obesity,Liraglutide,GLP-1 Receptor Agonist,"Stimulates GLP-1 receptor, enhancing satiety and reducing appetite",Subcutaneous Injection,Adult and Pediatric,36768,8.1,2.16,8.4,4.7
+P079,Psychiatry,Major Depressive Disorder,Duloxetine,SNRI,Inhibits reuptake of serotonin and norepinephrine,Oral,Adult,40547,1.5,0.5,4.9,8.0
+P080,Respiratory,Cystic Fibrosis,Elexacaftor/Tezacaftor/Ivacaftor,CFTR Modulator,Corrects and potentiates defective CFTR protein function,Oral,Adult and Pediatric,342332,4.6,1.98,3.3,7.8
+P081,Immunology,Rheumatoid Arthritis,Baricitinib,JAK Inhibitor (JAK1/JAK2),"Inhibits Janus kinases, reducing cytokine-driven joint inflammation",Oral,Adult,988073,4.3,1.34,5.5,5.2
+P082,Respiratory,Pulmonary Fibrosis,Pirfenidone,Antifibrotic Agent,"Modulates TGF-beta activity, reducing fibrotic tissue formation",Oral,Adult,59872,9.9,0.62,4.2,7.6
+P083,Neurology,Migraine,Erenumab,Anti-CGRP Receptor Monoclonal Antibody,"Blocks the CGRP receptor, preventing migraine pathway activation",Subcutaneous Injection,Adult,58414,3.7,1.06,7.0,5.4
+P084,Immunology,Psoriasis,Secukinumab,IL-17A Inhibitor (Monoclonal Antibody),"Neutralizes IL-17A, reducing inflammatory signaling",Subcutaneous Injection,Adult and Pediatric,82753,6.9,1.59,9.3,3.1
+P085,Oncology,Breast Cancer,Trastuzumab,Monoclonal Antibody (Anti-HER2),"Binds HER2 receptor, blocking growth signaling",Intravenous Infusion,Adult,96229,3.9,1.81,4.0,7.0
+P086,Endocrinology,Type 1 Diabetes,Insulin Glargine,Long-Acting Insulin Analog,"Activates insulin receptors, promoting cellular glucose uptake",Subcutaneous Injection,Adult and Pediatric,441472,3.9,1.13,2.1,7.0
+P087,Gastroenterology,Crohn's Disease,Ustekinumab,IL-12/23 Inhibitor (Monoclonal Antibody),"Blocks IL-12 and IL-23, reducing inflammatory signaling",Subcutaneous Injection,Adult and Pediatric,38013,8.6,1.19,7.2,6.4
+P088,Immunology,Lupus,Belimumab,BLyS Inhibitor (Monoclonal Antibody),"Inhibits B-lymphocyte stimulator, reducing autoreactive B-cells",Intravenous Infusion,Adult and Pediatric,120016,3.9,1.67,3.1,7.0
+P089,Oncology,Non-Small Cell Lung Cancer,Erlotinib,Tyrosine Kinase Inhibitor (EGFR),"Inhibits EGFR tyrosine kinase, blocking proliferation signaling",Oral,Adult,12996,1.4,2.43,1.3,2.1
+P090,Neurology,Alzheimer's Disease,Donepezil,Cholinesterase Inhibitor,"Inhibits acetylcholinesterase, increasing synaptic acetylcholine",Oral,Elderly,165026,3.7,1.94,7.5,8.7
+P091,Respiratory,Cystic Fibrosis,Elexacaftor/Tezacaftor/Ivacaftor,CFTR Modulator,Corrects and potentiates defective CFTR protein function,Oral,Adult and Pediatric,268053,6.2,1.78,5.5,9.1
+P092,Gastroenterology,IBS,Linaclotide,Guanylate Cyclase-C Agonist,"Activates GC-C receptors, increasing intestinal fluid secretion",Oral,Adult,25971,2.9,2.29,8.9,2.9
+P093,Cardiology,Hyperlipidemia,Atorvastatin,Statin (HMG-CoA Reductase Inhibitor),"Inhibits HMG-CoA reductase, lowering cholesterol synthesis",Oral,Adult,175035,6.7,1.56,4.8,3.8
+P094,Respiratory,Cystic Fibrosis,Elexacaftor/Tezacaftor/Ivacaftor,CFTR Modulator,Corrects and potentiates defective CFTR protein function,Oral,Adult and Pediatric,24742,3.7,1.86,4.3,4.9
+P095,Neurology,Migraine,Sumatriptan,Triptan (5-HT1B/1D Agonist),"Stimulates serotonin 5-HT1B/1D receptors, causing vasoconstriction",Oral,Adult,641342,9.9,0.82,2.0,9.2
+P096,Cardiology,Coronary Artery Disease,Atorvastatin,Statin (HMG-CoA Reductase Inhibitor),"Inhibits HMG-CoA reductase, lowering cholesterol synthesis",Oral,Adult,88289,6.8,0.9,5.6,1.1
+P097,Dermatology,Atopic Dermatitis,Tacrolimus,Topical Calcineurin Inhibitor,"Inhibits calcineurin, reducing local immune activation",Topical,Adult and Pediatric,19028,4.7,2.01,2.5,2.0
+P098,Respiratory,COPD,Salmeterol,LABA (Long-Acting Beta2 Agonist),Relaxes airway smooth muscle via beta-2 receptor stimulation,Inhaled,Adult,79196,4.9,1.99,5.5,2.0
+P099,Cardiology,Hypertension,Lisinopril,ACE Inhibitor,"Inhibits angiotensin-converting enzyme, reducing vasoconstriction",Oral,Adult,127380,5.1,0.6,2.6,8.6
+P100,Neurology,Migraine,Erenumab,Anti-CGRP Receptor Monoclonal Antibody,"Blocks the CGRP receptor, preventing migraine pathway activation",Subcutaneous Injection,Adult,104602,7.4,1.54,7.7,3.8
+P101,Oncology,Multiple Myeloma,Bortezomib,Proteasome Inhibitor,"Inhibits the 26S proteasome, causing accumulation of pro-apoptotic proteins",Intravenous Infusion,Adult,216453,5.2,2.42,9.4,9.1
+P102,Immunology,Psoriatic Arthritis,Adalimumab,TNF-alpha Inhibitor (Monoclonal Antibody),"Neutralizes TNF-alpha, reducing inflammatory response",Subcutaneous Injection,Adult and Pediatric,138907,7.6,0.65,4.7,1.2
+P103,Infectious Disease,Hepatitis C,Ledipasvir,NS5A Inhibitor,"Inhibits HCV NS5A protein, blocking viral replication",Oral,Adult and Pediatric,208782,4.4,2.25,1.8,9.9
+P104,Respiratory,COPD,Tiotropium,LAMA (Long-Acting Muscarinic Antagonist),"Blocks muscarinic receptors, reducing bronchoconstriction",Inhaled,Adult,603578,6.9,0.56,5.7,5.3
+P105,Oncology,Multiple Myeloma,Daratumumab,Anti-CD38 Monoclonal Antibody,"Binds CD38 on myeloma cells, triggering immune-mediated killing",Intravenous Infusion,Adult,223378,4.4,1.78,7.1,3.6
+P106,Endocrinology,Hypothyroidism,Levothyroxine,Thyroid Hormone Replacement,"Activates thyroid hormone receptors, restoring metabolic regulation",Oral,Adult and Pediatric,163221,7.5,0.65,7.7,2.9
+P107,Neurology,Alzheimer's Disease,Lecanemab,Anti-Amyloid Monoclonal Antibody,"Binds amyloid-beta aggregates, promoting clearance",Intravenous Infusion,Elderly,109630,5.1,1.73,8.2,3.6
+P108,Immunology,Rheumatoid Arthritis,Rituximab,B-cell Depleting Agent (Anti-CD20 Monoclonal Antibody),"Binds CD20 on B-lymphocytes, triggering B-cell depletion",Intravenous Infusion,Adult,153625,3.7,1.32,4.7,7.3
+P109,Respiratory,Allergic Rhinitis,Montelukast,Leukotriene Receptor Antagonist,"Blocks the cysteinyl leukotriene receptor, reducing allergic inflammation",Oral,Adult and Pediatric,370925,1.8,0.92,7.0,4.0
+P110,Neurology,Alzheimer's Disease,Donepezil,Cholinesterase Inhibitor,"Inhibits acetylcholinesterase, increasing synaptic acetylcholine",Oral,Elderly,26513,2.2,1.34,7.2,1.0
+P111,Gastroenterology,Crohn's Disease,Infliximab,TNF-alpha Inhibitor (Monoclonal Antibody),"Neutralizes TNF-alpha, reducing inflammatory response",Intravenous Infusion,Adult and Pediatric,85573,8.6,0.96,4.6,2.6
+P112,Oncology,Non-Small Cell Lung Cancer,Osimertinib,Tyrosine Kinase Inhibitor (EGFR),"Selectively inhibits mutant EGFR, blocking proliferation signaling",Oral,Adult,112911,7.3,2.15,8.1,6.2
+P113,Dermatology,Psoriasis,Secukinumab,IL-17A Inhibitor (Monoclonal Antibody),"Neutralizes IL-17A, reducing inflammatory signaling",Subcutaneous Injection,Adult and Pediatric,88178,1.9,1.36,8.2,4.7
+P114,Infectious Disease,COVID-19,Ritonavir (with Nirmatrelvir),Protease Inhibitor,"Inhibits viral protease, blocking viral replication (boosted combination)",Oral,Adult and Pediatric,629262,9.2,2.35,6.3,4.2
+P115,Neurology,Parkinson's Disease,Levodopa/Carbidopa,Dopamine Precursor,Replenishes dopamine synthesis in the CNS,Oral,Elderly,171008,5.9,0.72,7.5,6.4
+P116,Endocrinology,Obesity,Semaglutide,GLP-1 Receptor Agonist,"Stimulates GLP-1 receptor, enhancing satiety and reducing appetite",Subcutaneous Injection,Adult,517349,8.9,0.7,5.0,8.6
+P117,Cardiology,Atrial Fibrillation,Warfarin,Anticoagulant (Vitamin K Antagonist),"Inhibits vitamin K epoxide reductase, reducing clotting factor synthesis",Oral,Adult,39776,4.8,1.47,9.8,7.1
+P118,Psychiatry,Bipolar Disorder,Lamotrigine,Anticonvulsant / Mood Stabilizer,"Blocks voltage-gated sodium channels, stabilizing neuronal excitability",Oral,Adult,50208,2.5,1.92,7.1,1.3
+P119,Gastroenterology,Hepatic Fibrosis,Obeticholic Acid,FXR Agonist,"Activates farnesoid X receptor, reducing hepatic fibrosis progression",Oral,Adult,254158,2.5,0.79,8.0,4.4
+P120,Oncology,Breast Cancer,Palbociclib,CDK4/6 Inhibitor,"Inhibits cyclin-dependent kinases 4/6, blocking cell cycle progression",Oral,Adult,32429,6.4,1.77,9.2,1.8
+P121,Psychiatry,Generalized Anxiety Disorder,Sertraline,SSRI,Inhibits reuptake of serotonin,Oral,Adult,250497,8.5,1.4,7.6,7.4
+P122,Immunology,Rheumatoid Arthritis,Baricitinib,JAK Inhibitor (JAK1/JAK2),"Inhibits Janus kinases, reducing cytokine-driven joint inflammation",Oral,Adult,137285,7.4,1.91,2.6,4.1
+P123,Psychiatry,Generalized Anxiety Disorder,Venlafaxine,SNRI,Inhibits reuptake of serotonin and norepinephrine,Oral,Adult,108473,8.4,2.36,5.5,5.1
+P124,Psychiatry,Bipolar Disorder,Quetiapine,Atypical Antipsychotic,Antagonizes dopamine D2 and serotonin 5-HT2A receptors,Oral,Adult and Pediatric,242387,9.9,0.55,3.3,9.4
+P125,Gastroenterology,Ulcerative Colitis,Vedolizumab,Anti-Integrin (α4β7) Monoclonal Antibody,"Blocks α4β7 integrin, inhibiting leukocyte migration into gut tissue",Intravenous Infusion,Adult,48266,3.4,1.49,8.0,6.3
+P126,Immunology,Psoriatic Arthritis,Secukinumab,IL-17A Inhibitor (Monoclonal Antibody),"Neutralizes IL-17A, reducing joint and skin inflammation",Subcutaneous Injection,Adult and Pediatric,271039,7.7,2.18,7.9,5.8
+P127,Oncology,Non-Small Cell Lung Cancer,Erlotinib,Tyrosine Kinase Inhibitor (EGFR),"Inhibits EGFR tyrosine kinase, blocking proliferation signaling",Oral,Adult,11015,5.7,1.26,1.7,9.8
+P128,Infectious Disease,Bacterial Pneumonia,Ceftriaxone,Cephalosporin Antibiotic,Inhibits bacterial cell wall synthesis,Intravenous Infusion,Adult and Pediatric,155697,9.5,2.49,7.8,8.2
+P129,Neurology,Migraine,Sumatriptan,Triptan (5-HT1B/1D Agonist),"Stimulates serotonin 5-HT1B/1D receptors, causing vasoconstriction",Oral,Adult,157744,7.1,2.48,3.4,8.3
+P130,Immunology,Psoriasis,Deucravacitinib,TYK2 Inhibitor,"Allosterically inhibits TYK2, reducing IL-23/type I interferon signaling",Oral,Adult,51203,2.4,2.21,3.1,1.7
+P131,Neurology,Migraine,Erenumab,Anti-CGRP Receptor Monoclonal Antibody,"Blocks the CGRP receptor, preventing migraine pathway activation",Subcutaneous Injection,Adult,262506,5.6,0.98,9.4,1.5
+P132,Oncology,Melanoma,Vemurafenib,BRAF Inhibitor,"Inhibits mutant BRAF kinase, blocking proliferation signaling",Oral,Adult,121742,9.7,1.78,7.4,8.6
+P133,Dermatology,Acne,Isotretinoin,Retinoid,Reduces sebaceous gland size and sebum production,Oral,Adult and Pediatric,269389,3.0,2.5,7.7,4.5
+P134,Immunology,Psoriasis,Secukinumab,IL-17A Inhibitor (Monoclonal Antibody),"Neutralizes IL-17A, reducing inflammatory signaling",Subcutaneous Injection,Adult and Pediatric,32494,8.6,2.3,9.9,3.8
+P135,Immunology,Rheumatoid Arthritis,Rituximab,B-cell Depleting Agent (Anti-CD20 Monoclonal Antibody),"Binds CD20 on B-lymphocytes, triggering B-cell depletion",Intravenous Infusion,Adult,327625,7.6,0.87,7.8,1.5
+P136,Dermatology,Vitiligo,Ruxolitinib,"JAK Inhibitor (JAK1/JAK2, Topical)","Inhibits JAK1/JAK2, reducing cytokine-driven melanocyte destruction",Topical,Adult and Pediatric,69570,1.5,2.2,1.1,6.8
+P137,Respiratory,COPD,Salmeterol,LABA (Long-Acting Beta2 Agonist),Relaxes airway smooth muscle via beta-2 receptor stimulation,Inhaled,Adult,17357,1.4,1.7,9.7,4.9
+P138,Respiratory,Asthma,Montelukast,Leukotriene Receptor Antagonist,"Blocks the cysteinyl leukotriene receptor, reducing airway inflammation",Oral,Adult and Pediatric,41976,6.2,1.99,2.1,8.0
+P139,Infectious Disease,HIV,Ritonavir,Protease Inhibitor,"Inhibits HIV protease, preventing viral particle maturation",Oral,Adult and Pediatric,83019,7.9,0.94,5.2,5.1
+P140,Cardiology,Coronary Artery Disease,Clopidogrel,Antiplatelet Agent (P2Y12 Inhibitor),"Inhibits P2Y12 receptor, blocking platelet aggregation",Oral,Adult,36687,6.4,1.26,8.7,7.7
+P141,Neurology,Alzheimer's Disease,Lecanemab,Anti-Amyloid Monoclonal Antibody,"Binds amyloid-beta aggregates, promoting clearance",Intravenous Infusion,Elderly,19957,9.5,0.66,9.2,4.2
+P142,Cardiology,Hyperlipidemia,Rosuvastatin,Statin (HMG-CoA Reductase Inhibitor),"Inhibits HMG-CoA reductase, lowering cholesterol synthesis",Oral,Adult,308585,8.1,1.23,5.4,9.2
+P143,Cardiology,Coronary Artery Disease,Atorvastatin,Statin (HMG-CoA Reductase Inhibitor),"Inhibits HMG-CoA reductase, lowering cholesterol synthesis",Oral,Adult,53374,9.2,0.91,7.5,5.4
+P144,Immunology,Ulcerative Colitis,Vedolizumab,Anti-Integrin (α4β7) Monoclonal Antibody,"Blocks α4β7 integrin, inhibiting leukocyte migration into gut tissue",Intravenous Infusion,Adult,20819,2.4,2.41,3.4,5.1
+P145,Psychiatry,ADHD,Methylphenidate,Stimulant,Blocks reuptake of dopamine and norepinephrine,Oral,Adult and Pediatric,91320,5.1,0.58,1.4,9.8
+P146,Endocrinology,Type 1 Diabetes,Insulin Lispro,Rapid-Acting Insulin Analog,"Activates insulin receptors, promoting cellular glucose uptake",Subcutaneous Injection,Adult and Pediatric,76628,4.2,2.44,3.8,3.7
+P147,Immunology,Lupus,Belimumab,BLyS Inhibitor (Monoclonal Antibody),"Inhibits B-lymphocyte stimulator, reducing autoreactive B-cells",Intravenous Infusion,Adult and Pediatric,178101,6.8,1.1,9.3,8.2
+P148,Gastroenterology,Ulcerative Colitis,Tofacitinib,JAK Inhibitor (JAK1/JAK3),"Inhibits Janus kinases, reducing cytokine-driven inflammation",Oral,Adult,14723,7.4,0.81,9.7,2.4
+P149,Oncology,Multiple Myeloma,Bortezomib,Proteasome Inhibitor,"Inhibits the 26S proteasome, causing accumulation of pro-apoptotic proteins",Intravenous Infusion,Adult,86645,7.2,2.4,4.6,8.6
+P150,Endocrinology,Osteoporosis,Alendronate,Bisphosphonate,Inhibits osteoclast-mediated bone resorption,Oral,Elderly,144813,1.5,1.83,8.6,8.3
