@@ -27,7 +27,7 @@ class User(Base):
 
 class AnalogProduct(Base):
     """
-    Stores all 150 historical benchmark analog products in PostgreSQL 17 database.
+    Stores all 150 historical benchmark analog products in the local DuckDB file.
     """
     __tablename__ = "analog_products"
 
@@ -49,7 +49,7 @@ class AnalogProduct(Base):
 
 class UserForecastInput(Base):
     """
-    Stores user-entered input parameters in PostgreSQL 17.
+    Stores user-entered input parameters in the local DuckDB file.
     """
     __tablename__ = "user_forecast_inputs"
 
@@ -76,7 +76,7 @@ class UserForecastInput(Base):
 class ForecastRecord(Base):
     """
     Stores complete forecast outputs, Bass parameters (p, q, m), 
-    analogs used, 52-week trajectory points, 12-month points, and explanations in PostgreSQL 17.
+    analogs used, 52-week trajectory points, 12-month points, and explanations in the local DuckDB file.
     """
     __tablename__ = "forecast_records"
 

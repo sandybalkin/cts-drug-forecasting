@@ -302,7 +302,7 @@ function ResultsContent() {
                 <RefreshCw className="w-3.5 h-3.5 animate-spin" />
               ) : savedSuccess ? (
                 <>
-                  <Check className="w-3.5 h-3.5" /> Saved to PostgreSQL
+                  <Check className="w-3.5 h-3.5" /> Saved to DuckDB
                 </>
               ) : (
                 <>

@@ -1,0 +1,12 @@
+fastapi>=0.110
+uvicorn>=0.27
+sqlalchemy>=2.0
+duckdb>=1.1
+duckdb-engine>=0.17
+pydantic>=2
+pandas>=2
+numpy>=1.26
+scikit-learn>=1.4
+scipy>=1.11
+gower>=0.1.2
+python-dotenv>=1.0

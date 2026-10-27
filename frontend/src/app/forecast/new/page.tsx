@@ -565,7 +565,7 @@ export default function NewForecastPage() {
                     className="w-full accent-blue-600"
                   />
                   <p className="text-[11px] text-slate-500">
-                    Selects top {topK} products with highest Gower similarity scores out of 150 historical launch curves stored in PostgreSQL 17.
+                    Selects top {topK} products with highest Gower similarity scores out of 150 historical launch curves stored in DuckDB.
                   </p>
                 </div>
 

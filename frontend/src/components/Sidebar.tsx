@@ -133,7 +133,7 @@ export default function Sidebar() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="font-semibold text-slate-300">PostgreSQL 17 Live</span>
+            <span className="font-semibold text-slate-300">DuckDB Live</span>
           </div>
           <button 
             onClick={handleLogout}
@@ -143,7 +143,7 @@ export default function Sidebar() {
           </button>
         </div>
         <p className="text-[11px] text-slate-400 leading-normal">
-          Bass Diffusion + Gower Analogs + PostgreSQL 17
+          Bass Diffusion + Gower Analogs + DuckDB
         </p>
       </div>
     </aside>

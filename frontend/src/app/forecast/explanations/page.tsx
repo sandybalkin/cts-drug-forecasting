@@ -70,7 +70,7 @@ export default function ForecastExplanationsPage() {
     <div className="flex-1 flex flex-col bg-slate-50 min-h-screen">
       <Header
         title="Forecast Model Explanations & Data Provenance"
-        subtitle="Complete mathematical, statistical, and PostgreSQL 17 source attribution breakdown"
+        subtitle="Complete mathematical, statistical, and DuckDB source attribution breakdown"
         backHref="/forecast/results"
       />
 
@@ -103,7 +103,7 @@ export default function ForecastExplanationsPage() {
             <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center">
               <Database className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-slate-900 text-sm">PostgreSQL 17 Benchmark Database</h3>
+            <h3 className="font-bold text-slate-900 text-sm">DuckDB Benchmark Database</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               Fetched from <span className="font-mono font-bold text-slate-800">analog_products</span> table containing 150 historical drug launch trajectory curves across 52 weeks.
             </p>
@@ -239,9 +239,9 @@ export default function ForecastExplanationsPage() {
           <div className="flex items-center justify-between border-b border-slate-200 pb-4">
             <div>
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Database className="w-4 h-4 text-blue-600" /> Benchmark Analog Provenance (PostgreSQL 17 Data Source)
+                <Database className="w-4 h-4 text-blue-600" /> Benchmark Analog Provenance (DuckDB Data Source)
               </h3>
-              <p className="text-xs text-slate-500">Historical launch curves queried directly from PostgreSQL 17 reference store</p>
+              <p className="text-xs text-slate-500">Historical launch curves queried directly from the DuckDB reference store</p>
             </div>
             <span className="px-3 py-1 bg-slate-100 font-mono text-xs font-bold text-slate-700 rounded-lg">
               {analogs.length} Analogs Selected
@@ -256,7 +256,7 @@ export default function ForecastExplanationsPage() {
                   <th className="py-3 px-4">Gower Similarity Score</th>
                   <th className="py-3 px-4">Hybrid Weighting %</th>
                   <th className="py-3 px-4">Historical 52w Rx Total</th>
-                  <th className="py-3 px-4">PostgreSQL Data Source</th>
+                  <th className="py-3 px-4">DuckDB Data Source</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
@@ -275,7 +275,7 @@ export default function ForecastExplanationsPage() {
                       {a.historical_52w_rx.toLocaleString()} Rx
                     </td>
                     <td className="py-3.5 px-4 text-emerald-600 font-semibold text-[11px]">
-                      PostgreSQL 17 (analog_products)
+                      DuckDB (analog_products)
                     </td>
                   </tr>
                 ))}

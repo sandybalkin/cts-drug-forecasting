@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 
-from backend.databricks_data import load_gold_data
-
 from .bass import BassModelTrainer, bass_weekly_curve, P_FEATURES, Q_FEATURES
 from .gower_similarity import get_top_analogs, FEATURES, CATEGORICAL_FEATURES
 from .analog import compute_analog_curve
@@ -19,7 +17,11 @@ class ForecastingEngine:
         self.is_initialized = False
 
     def initialize(self):
-        # Load model-ready data directly from Databricks Gold tables
+        # Databricks gold tables feed the forecast math. Import here so the
+        # FastAPI app can boot against embedded DuckDB when that package or
+        # those credentials are not configured.
+        from backend.databricks_data import load_gold_data
+
         (
             self.similarity_df,
             self.bass_df,

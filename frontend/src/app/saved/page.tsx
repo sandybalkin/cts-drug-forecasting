@@ -21,7 +21,7 @@ export default function SavedForecastsPage() {
   return (
     <div className="flex-1 flex flex-col">
       <Header
-        title="Saved Forecast Records (PostgreSQL Database)"
+        title="Saved Forecast Records (DuckDB)"
         subtitle="Historical saved scenarios and commercial launch forecast runs"
         backHref="/"
       />
@@ -30,7 +30,7 @@ export default function SavedForecastsPage() {
         {loading ? (
           <div className="flex flex-col items-center justify-center p-12 space-y-3 text-slate-500">
             <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
-            <p className="text-xs font-semibold">Querying PostgreSQL database...</p>
+            <p className="text-xs font-semibold">Querying DuckDB database...</p>
           </div>
         ) : records.length === 0 ? (
           <div className="bg-white p-12 rounded-2xl border border-slate-200 text-center text-slate-500">
@@ -46,7 +46,7 @@ export default function SavedForecastsPage() {
                 <p className="text-xs text-slate-500">Saved launch model configurations and outputs</p>
               </div>
               <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
-                PostgreSQL Connected
+                DuckDB Connected
               </span>
             </div>
 
