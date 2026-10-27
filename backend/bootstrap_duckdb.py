@@ -18,8 +18,8 @@ from sqlalchemy.orm import sessionmaker
 import backend.database as database
 from backend.seed import seed_analog_products
 
-# Queryable copies of the forecasting CSVs. The forecasting engine still
-# reads Databricks gold tables; these tables are the local DuckDB catalog.
+# Queryable copies of the forecasting CSVs. The forecast loader prefers
+# these DuckDB tables and falls back to the CSVs under data/.
 REFERENCE_CSVS = {
     "bass_final": "bass_final.csv",
     "weekly_rx_final": "weekly_rx_final.csv",

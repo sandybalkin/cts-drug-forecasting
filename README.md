@@ -2,7 +2,7 @@
 
 **PharmaLaunch PRO** is an enterprise-grade pharmaceutical commercial launch forecasting and decision support platform. It integrates a **12-Dimensional Gower Similarity Matrix** with **Non-Linear Bass Diffusion Trajectory Fitting** and an **embedded DuckDB database** to predict 52-week post-launch revenue, prescription uptake, and scenario sensitivity curves for pre-launch drug candidates.
 
-The local application database is a single DuckDB file (default `data/pharmalaunch.duckdb`). PostgreSQL is not required. Databricks gold tables remain the source for the forecasting engine when those credentials are configured; they are separate from this local database.
+The local application database is a single DuckDB file (default `data/pharmalaunch.duckdb`). PostgreSQL is not required. Forecast inputs are the CSVs under `data/` (or the DuckDB tables loaded from those CSVs). Historical Bass parameters are fit by a local R script. A Databricks warehouse is not used.
 
 ---
 
@@ -12,7 +12,7 @@ The local application database is a single DuckDB file (default `data/pharmalaun
 - **Gower Similarity Distance Matrix**: Evaluates candidate drug similarity across 12 clinical & commercial dimensions against a database of **150 validated historical drug launches**.
   - **Categorical Factors (7)**: Therapeutic Area, Primary Indication, Active Ingredient, Pharmacological Class, Mechanism of Action (MoA), Route of Administration, Target Population.
   - **Continuous Factors (5)**: Addressable Population, Competition Level, Relative Price Index, Market Access Level, Clinical Evidence Strength.
-- **Bass Diffusion Trajectory Fit**: Estimates Innovation ($p$), Imitation ($q$), and Market Capacity ($M$) parameters using standardized Ridge regression and clinical evidence scores.
+- **Bass Diffusion Trajectory Fit**: R fits historical innovation ($p$) and imitation ($q$) on each analog's weekly curve. Python Ridge regression then predicts $p$ and $q$ for a candidate from its commercial features. Market capacity ($M$) is addressable population times estimated penetration.
 - **Hybrid Curve Weighting**: Blends top-$k$ analog historical curves with Bass diffusion curves (default: **10% Analog / 90% Bass**) under strict $100\%$ sum constraints.
 
 ### 2. Embedded DuckDB Database
@@ -20,7 +20,7 @@ The local application database is a single DuckDB file (default `data/pharmalaun
 - **Persistent Input Records**: Stores every candidate parameter run in `user_forecast_inputs`.
 - **Complete Forecast Outputs**: Persists calculated 52-week trajectories, 12-month projections, Bass fits, and analog rankings in `forecast_records`.
 - **Analog Catalog**: `analog_products` holds the benchmark drug launches, seeded from `data/similarity+analog_features_final.csv`, with search and therapeutic-area filters.
-- **Reference CSV tables**: `python -m backend.bootstrap_duckdb` also loads `bass_final` and `weekly_rx_final` so the CSVs under `data/` can be queried in DuckDB. The forecasting math does not read those tables; it still calls the Databricks gold-table loader.
+- **Reference CSV tables**: `python -m backend.bootstrap_duckdb` loads `bass_final` and `weekly_rx_final` into DuckDB. The forecast loader prefers those tables, and `analog_products`, when they have rows. Otherwise it reads the CSVs directly.
 - **Organization & Role RBAC**: `organizations` and `users` store organization profiles and roles (*Launch Director, Forecast Analyst, Commercial Associate, Management Viewer*).
 
 ### 3. 5-Step Guided Launch Setup Wizard
@@ -49,8 +49,9 @@ The local application database is a single DuckDB file (default `data/pharmalaun
 │   ├── models.py                # SQLAlchemy ORM models (Users, Orgs, Forecasts, Analogs)
 │   ├── schemas.py               # Pydantic request/response validation schemas
 │   ├── main.py                  # FastAPI application entry point & CORS configuration
-│   ├── databricks_db.py         # Optional Databricks SQL connection (unchanged)
-│   ├── databricks_data.py       # Gold-table loader used by the forecast engine
+│   ├── local_forecast_data.py   # DuckDB/CSV source selection for the forecast engine
+│   ├── r/
+│   │   └── prepare_forecast_inputs.R  # Validate inputs and fit historical Bass p, q
 │   ├── forecasting/
 │   │   ├── engine.py            # Main ForecastingEngine orchestrator
 │   │   ├── analog.py            # 12-Dimensional Gower similarity matrix engine
@@ -91,9 +92,15 @@ The local application database is a single DuckDB file (default `data/pharmalaun
 
 ## Local Development Setup
 
-### 1. Backend (FastAPI & embedded DuckDB)
+### 1. Backend (FastAPI, DuckDB, and R)
+
+R is a system package, not a pip package. The API needs `Rscript` on `PATH` before the forecasting engine can initialize. Auth, the analog catalog, and saved forecasts still start if R is missing; forecast routes then return an engine error until R is available.
 
 ```bash
+# R
+# macOS: install the CRAN build, or `brew install r`
+# Ubuntu: sudo apt-get install r-base-core
+
 # From the repository root
 python -m venv .venv
 source .venv/bin/activate
@@ -105,13 +112,13 @@ cp .env.example .env
 # Create the schema, seed analog_products, and load the reference CSVs
 python -m backend.bootstrap_duckdb
 
-# Start the API
+# Start the API. The first forecast-engine start runs the R script.
 uvicorn backend.main:app --reload --port 8000
 ```
 
-The server also creates tables and seeds `analog_products` on startup, so the bootstrap command is only required when you want the `bass_final` and `weekly_rx_final` tables loaded up front.
+The server also creates tables and seeds `analog_products` on startup, so the bootstrap command is only required when you want `bass_final` and `weekly_rx_final` loaded into DuckDB up front. Without those tables the engine reads `data/bass_final.csv` and `data/weekly_rx_final.csv`.
 
-Forecast curves still load from Databricks gold tables (`databricks-sql-connector`, plus `DATABRICKS_SERVER_HOSTNAME`, `DATABRICKS_HTTP_PATH`, and `DATABRICKS_TOKEN`). That client is not required to boot the API, sign in, or query the DuckDB catalog. The import happens only when the forecasting engine initializes.
+`RSCRIPT_PATH` overrides the R binary (default `Rscript`). `FORECAST_DATA_SOURCE` defaults to `local`. Setting it to `databricks` raises an error instead of contacting a warehouse. Prepared frames are cached under `FORECAST_CACHE_DIR` (default `data/.forecast_cache`) so the next startup does not refit unless the CSVs, DuckDB file, or R script change.
 
 Open API docs at [http://localhost:8000/docs](http://localhost:8000/docs).
 
@@ -134,7 +141,7 @@ pip install -r requirements-dev.txt
 pytest
 ```
 
-Tests use a temporary DuckDB file per test. They do not open `data/pharmalaunch.duckdb`.
+Tests use a temporary DuckDB file per test. They do not open `data/pharmalaunch.duckdb`. Forecast tests run `Rscript` against the repo CSVs and do not use Databricks credentials.
 
 ---
 
@@ -157,10 +164,23 @@ duckdb-engine speaks SQLAlchemy by subclassing the PostgreSQL dialect, which sti
 | Foreign keys | Declared on `users` and `forecast_records` and enforced by DuckDB. |
 | Connection pool / server | Embedded file, `NullPool` (one DuckDB connection per session). Do not point several server processes at the same file for concurrent writes; DuckDB allows one writer. |
 
-Forecasting curve math is unchanged. Only the local persistence layer and the copy that named PostgreSQL moved to DuckDB.
+Gower similarity, the hybrid weights, the scenario curves, and the Ridge models that predict a candidate's $p$ and $q$ are unchanged. What changed is where historical $p$ and $q$ come from: the R script fits them from local weekly prescriptions instead of reading a warehouse table.
+
+### Databricks gap
+
+These warehouse objects are not queried anymore:
+
+| Former Databricks object | Local replacement |
+| --- | --- |
+| `gold_product` | `analog_products` in DuckDB, or `data/similarity+analog_features_final.csv` |
+| `gold_bass_features` | `bass_final` in DuckDB, or `data/bass_final.csv`, plus `m`, `p_fit`, `q_fit`, and `fit_r2` computed in R |
+| `gold_weekly_rx` | `weekly_rx_final` in DuckDB, or `data/weekly_rx_final.csv` |
+| `DATABRICKS_SERVER_HOSTNAME`, `DATABRICKS_HTTP_PATH`, `DATABRICKS_TOKEN` | Not read |
+
+The shipped `bass_final.csv` has launch features only. It does not contain pre-fit Bass coefficients, so those coefficients are estimated locally. There is no other clinical or commercial extract in this repository. Replacing the three CSVs is how the catalog is refreshed. `FORECAST_DATA_SOURCE=databricks` is rejected on purpose so a missing token cannot silently look like a successful warehouse read.
 
 ---
 
 ## License & Attribution
 
-Developed for enterprise pharmaceutical commercial launch planning and decision support. Powered by **FastAPI**, **Next.js**, **DuckDB**, **Recharts**, and **Tailwind CSS**.
+Developed for enterprise pharmaceutical commercial launch planning and decision support. Powered by **FastAPI**, **Next.js**, **DuckDB**, **R**, **Recharts**, and **Tailwind CSS**.

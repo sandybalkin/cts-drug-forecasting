@@ -52,7 +52,8 @@ class BassModelTrainer:
         # Calculate m
         df["m"] = df["addressable_population"] * df["estimated_penetration"]
 
-        # Fit p_fit and q_fit if not present
+        # The local R preparation step supplies p_fit and q_fit. This
+        # in-process fit remains for frames that do not include them.
         if "p_fit" not in df.columns or "q_fit" not in df.columns:
             p_fits = []
             q_fits = []

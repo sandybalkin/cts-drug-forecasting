@@ -69,8 +69,7 @@ async def lifespan(app: FastAPI):
     # FORECASTING ENGINE
     # ---------------------------------------------------------
     print(
-        f"Initializing forecasting engine with data from "
-        f"{DATA_DIR}..."
+        "Initializing forecasting engine from local DuckDB/CSV inputs via R..."
     )
 
     try:

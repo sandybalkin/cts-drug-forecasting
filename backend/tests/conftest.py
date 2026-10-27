@@ -13,6 +13,8 @@ import pytest
 
 _SESSION_DIR = Path(tempfile.mkdtemp(prefix="pharmalaunch-duckdb-"))
 os.environ["DUCKDB_PATH"] = str(_SESSION_DIR / "import.duckdb")
+os.environ["FORECAST_CACHE_DIR"] = str(_SESSION_DIR / "forecast-cache")
+os.environ["FORECAST_DATA_SOURCE"] = "local"
 
 
 @pytest.fixture(autouse=True)
