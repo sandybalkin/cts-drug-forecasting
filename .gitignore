@@ -9,12 +9,16 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
 venv/
 .venv/
 
 # Database files
 *.db
 *.sqlite3
+*.duckdb
+*.duckdb.wal
+.forecast_cache/
 
 # Node dependencies & build artifacts
 node_modules/

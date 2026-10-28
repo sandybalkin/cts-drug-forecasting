@@ -83,10 +83,9 @@ def get_analogs_catalog(
     search: Optional[str] = Query(None),
     therapeutic_area: Optional[str] = Query(None),
     db: Session = Depends(get_db),
-    engine: ForecastingEngine = Depends(get_engine)
 ):
     """
-    Queries 150 benchmark products directly from PostgreSQL 17 database.
+    Queries benchmark products from the local DuckDB analog_products table.
     """
     try:
         query = db.query(AnalogProduct)
@@ -138,7 +137,7 @@ def save_user_forecast(
 ):
     """
     Computes and stores COMPLETE forecast output parameters, Bass parameters (p, q, m),
-    52-week weekly trajectories, monthly trajectories, and explanations into PostgreSQL 17.
+    52-week weekly trajectories, monthly trajectories, and explanations into DuckDB.
     """
     try:
         drug_dict = req.product_inputs.model_dump() if hasattr(req.product_inputs, 'model_dump') else req.product_inputs.dict()
@@ -190,7 +189,7 @@ def save_user_forecast(
         
         return {
             "status": "success",
-            "message": "Complete forecast outputs, Bass parameters, and 52-week trajectory stored in PostgreSQL 17 database successfully",
+            "message": "Complete forecast outputs, Bass parameters, and 52-week trajectory stored in DuckDB successfully",
             "id": forecast_record.id
         }
     except Exception as e:
@@ -202,7 +201,7 @@ def get_user_forecast_history(
     db: Session = Depends(get_db)
 ):
     """
-    Retrieves full stored forecast calculation records directly from PostgreSQL 17 database.
+    Retrieves full stored forecast calculation records from DuckDB.
     """
     try:
         records = db.query(ForecastRecord).order_by(ForecastRecord.created_at.desc()).all()

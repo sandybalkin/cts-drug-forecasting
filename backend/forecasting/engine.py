@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 
-from backend.databricks_data import load_gold_data
-
 from .bass import BassModelTrainer, bass_weekly_curve, P_FEATURES, Q_FEATURES
 from .gower_similarity import get_top_analogs, FEATURES, CATEGORICAL_FEATURES
 from .analog import compute_analog_curve
@@ -19,14 +17,16 @@ class ForecastingEngine:
         self.is_initialized = False
 
     def initialize(self):
-        # Load model-ready data directly from Databricks Gold tables
+        # Local CSVs or DuckDB tables, with historical Bass p/q fit in R.
+        # Import here so a missing Rscript fails this step rather than import.
+        from backend.local_forecast_data import load_forecast_frames
+
         (
             self.similarity_df,
             self.bass_df,
             self.weekly_df
-        ) = load_gold_data()
+        ) = load_forecast_frames(self.data_dir)
 
-        # Train Bass model using Databricks Gold data
         self.trainer = BassModelTrainer()
         self.trainer.fit(self.bass_df, self.weekly_df)
 

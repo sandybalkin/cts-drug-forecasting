@@ -69,7 +69,7 @@ export default function LoginPage() {
 
       <Header
         title="PharmaLaunch PRO — Enterprise Launch Forecasting Platform"
-        subtitle="PostgreSQL 17 Database Authentication & Quantitative Forecast Engine Portal"
+        subtitle="DuckDB Authentication & Quantitative Forecast Engine Portal"
         hideExport={true}
       />
 
@@ -87,8 +87,8 @@ export default function LoginPage() {
             </h2>
             <p className="text-xs text-slate-400">
               {isSignUp 
-                ? 'Create a pharmaceutical organization profile connected to PostgreSQL 17'
-                : 'Access your persistent forecast studio and PostgreSQL historical records'
+                ? 'Create a pharmaceutical organization profile stored in the local DuckDB database'
+                : 'Access your persistent forecast studio and DuckDB historical records'
               }
             </p>
           </div>
@@ -203,7 +203,7 @@ export default function LoginPage() {
               className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-900/30 transition-all mt-2"
             >
               {loading ? (
-                <span>Processing PostgreSQL 17 Request...</span>
+                <span>Processing DuckDB Request...</span>
               ) : (
                 <>
                   <span>{isSignUp ? 'Create Organization Account' : 'Sign In to Workspace'}</span>
